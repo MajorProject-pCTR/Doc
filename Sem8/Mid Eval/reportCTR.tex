@@ -193,7 +193,37 @@ Time & 11.455s & 9.341s & 8.078s\\
  \hline
 \end{tabular}
 \end{center}
-\subsubsection{R}
+
+\subsubsection{Octave}
+Parameters hidden layer nodes and lambda were chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
+\\
+
+Before join
+
+	Best lambda = 0.5 Opt hidden layer size = 5
+
+	Time taken for training = 368.599383
+
+	Train
+		Cost = 0.158379
+
+		AUC  : 0.649975	
+
+	Test
+		Cost = 0.159229
+
+		AUC  : 0.658944	
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.649975 & 0.658944\\
+ \hline
+Time & 29.861s & 17.910s\\ 
+ \hline
+\end{tabular}
+\end{center}
 
 \subsection{Random forests}
 
@@ -229,7 +259,7 @@ We propose to improve the newly found AUC by different means by varying the para
 \section{Future Work}
 Some more complex algorithms namely SVM and Collaborative Filtering will be next tried on this data subset. Efficient methods for ensembling using Neural Networks and random forest will be done. The complete dataset will be used with Vowpal Wabbit as the tool. If Vowpal Wabbit isn't efficient enough, then a cluster will be set up and the machine learning algorithms already used and others on the paper will be implemented on it. With this, hopefully we would be able to improve the AUC obtained in the paper or otherwise get an approximately same AUC.
 \section{Conclusion}
-We managed to get a good grip over the data and obtained a sufficiently small subset of it for local implementation. Some machine learning techniques including linear regression, logistic regression, neural nets and random forests were implemented in the smaller data set using different machine learning tools such as Python, Vowpal Wabbit and R, we are working on getting the subset of the original data set of our problem that represents the original data set so that first we can work on that subset in our local machine.
+We managed to get a good grip over the data and obtained a sufficiently small subset of it for local implementation. Some machine learning techniques including linear regression, logistic regression, neural nets and random forests were implemented in the smaller data set using R, Octave, Python, Vowpal Wabbit. We are working on improving the ensembled implementation.
 \section{Bibliography}
 \begin{enumerate}
 	\item KDD Cup 2012, https://www.kddcup2012.org/c/kddcup2012-track2
