@@ -102,6 +102,60 @@ Here are the results that we obtained.
 
 \section{Results}
 \subsection{Linear regression}
+
+\subsubsection{Octave}
+Parameters - alpha chosen by minimizing the cost of validation set. Number of iterations was chosen to be 1000.
+\\
+
+Before join
+
+	Best alpha = 0.5 
+\\
+
+	Time taken for training = 56.048276
+
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.624998 & 0.641728\\
+ \hline
+\end{tabular}
+\end{center}
+
+After join
+
+	Best alpha = 0.01 
+\\
+
+	Time taken for training = 49.639566
+
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.635950 & 0.650879\\
+ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{R}
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training AUC & Testing AUC & Training_time\\ [0.5ex] 
+ \hline\hline
+Before join & 0.624310 & 0.641046 & 1.564258 s\\
+ \hline
+After join & 0.635856 & 0.650858 & 1.696697 s\\ 
+ \hline
+\end{tabular}
+\end{center}
+
 \subsubsection{Python}
 \begin{center}
  \begin{tabular}{|c | c | c | c||} 
@@ -145,8 +199,6 @@ Time & 20.827s & 7.257s\\
 \end{tabular}
 \end{center}
 
-\subsubsection{R}
-
 \subsection{Logistic regression}
 \subsubsection{Python}
 
@@ -163,6 +215,57 @@ After join & 0.507160 & 0.474355 & 34.114s\\
 \end{center}
 
 \subsubsection{R}
+
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training AUC & Testing AUC & Total time\\ [0.5ex]
+ \hline\hline
+Before join & 0.629029 & 0.641467 & 11.88907 s\\
+ \hline
+After join & 0.638545 & 0.650791 & 13.78439 s\\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection(Octave}
+Parameters - lambda was chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
+\\
+
+Before join
+
+	Best lambda = 0 
+\\
+
+	Time taken for training = 16.486638
+
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.628339 & 0.640716\\
+ \hline
+\end{tabular}
+\end{center}
+
+After join
+
+	Best lambda = 0
+\\
+	Time taken for training = 0.723193
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.637977 & 0.650314\\
+ \hline
+\end{tabular}
+\end{center}
+
 
 \subsection{Neural networks}
 \subsubsection{Vowpal Wabbit}
@@ -195,24 +298,17 @@ Time & 11.455s & 9.341s & 8.078s\\
 \end{center}
 
 \subsubsection{Octave}
-Parameters hidden layer nodes and lambda were chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
+Parameters - hidden layer nodes and lambda were chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
 \\
 
 Before join
 
-	Best lambda = 0.5 Opt hidden layer size = 5
+	Best lambda = 0.5 Opt hidden layer size = 5 
+\\
 
 	Time taken for training = 368.599383
 
-	Train
-		Cost = 0.158379
-
-		AUC  : 0.649975	
-
-	Test
-		Cost = 0.159229
-
-		AUC  : 0.658944	
+\\
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
  \hline
@@ -220,10 +316,25 @@ Before join
  \hline\hline
 AUC & 0.649975 & 0.658944\\
  \hline
-Time & 29.861s & 17.910s\\ 
+\end{tabular}
+\end{center}
+
+After join
+
+	Best lambda = 0 Opt hidden layer size = 6 
+\\
+	Time taken for training = 330.882975
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.670919 & 0.669499\\
  \hline
 \end{tabular}
 \end{center}
+
 
 \subsection{Random forests}
 
