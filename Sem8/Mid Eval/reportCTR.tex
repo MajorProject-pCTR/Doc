@@ -365,12 +365,34 @@ Time & 28.621s & 10.838s\\
 \end{tabular}
 \end{center}
 
+\\
+
+Using neural network with 100 iteration in Octave
+input features are outputs of linear regression in R, logistic regression in R and neural network in Octave all on joined datasets
+
+	Best lambda = 0 Opt hidden layer size = 1 
+\\
+	Time taken for training = 190.248439
+\\
+\begin{center}
+ \begin{tabular}{|c | c | c ||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.666976 & 0.664057\\
+ \hline
+\end{tabular}
+\end{center}
+
 \section{Proposed Method}
-We propose to improve the newly found AUC by different means by varying the parameter values, deriving new features by combining existing features and trying out alternate combinations of basic algorithms for blending.
+Ensembled model with input as predictions of individual algorithms combined together will be used. 
+
 \section{Future Work}
 Some more complex algorithms namely SVM and Collaborative Filtering will be next tried on this data subset. Efficient methods for ensembling using Neural Networks and random forest will be done. The complete dataset will be used with Vowpal Wabbit as the tool. If Vowpal Wabbit isn't efficient enough, then a cluster will be set up and the machine learning algorithms already used and others on the paper will be implemented on it. With this, hopefully we would be able to improve the AUC obtained in the paper or otherwise get an approximately same AUC.
+
 \section{Conclusion}
-We managed to get a good grip over the data and obtained a sufficiently small subset of it for local implementation. Some machine learning techniques including linear regression, logistic regression, neural nets and random forests were implemented in the smaller data set using R, Octave, Python, Vowpal Wabbit. We are working on improving the ensembled implementation.
+We managed to get a good grip over the data and obtained a sufficiently small subset of it for local implementation. Some machine learning techniques including linear regression, logistic regression, neural nets and random forests were implemented in the smaller data set using R, Octave, Python, Vowpal Wabbit. We have obtained a best AUC score of 0.669 on test set using neural network. The ensembled method did not improve this AUC score. We are working on improving the ensembled implementation. AUC score of 0.8 or more is our target.
+
 \section{Bibliography}
 \begin{enumerate}
 	\item KDD Cup 2012, https://www.kddcup2012.org/c/kddcup2012-track2
