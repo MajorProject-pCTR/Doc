@@ -86,12 +86,9 @@ From these graphs we can infer that there is no direct relationship between any 
 The additional files that were given needed to be joined with the main data so that better models could be obtained. \\\\
 
 We started working on different tools (Python, R, Vowpal Wabbit) that were new to us. This was necessary as some tools have an edge over the others because of more efficient library implementations while others seem to be faster. \\\\
-
 All our code have been hosted in github : https://github.com/MajorProject-pCTR/Basic \\\\
-
 R \\
 R is the most widely used statistical language in data-science competetions. There are efficient inbuilt functions for machine learning algorithms in R. Its disadvantage is that objects must generally be stored in physical memory. \\\\
-
 Octave \\
 Octave is the open-source variant of Matlab. Its efficient vectorized computations have been used in our implementations. The performance of this language is also limited by primary memory.
 
@@ -106,6 +103,20 @@ Here are the results that we obtained.
 \section{Results}
 \subsection{Linear regression}
 \subsubsection{Python}
+Before join\\
+
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training AUC & Testing AUC & Total time\\ [0.5ex] 
+ \hline\hline
+Before join & 0.586956 & 0.604606 & 34.114s\\
+ \hline
+After join & 0.586956 & 0.604606 & 28.680s\\ 
+ \hline
+\end{tabular}
+\end{center}
+
 \subsubsection{Vowpal Wabbit}
 
 Linear Regression:\\
@@ -115,22 +126,23 @@ Linear Regression:\\
  \hline
  & Training & Testing\\ [0.5ex] 
  \hline\hline
-AUC & 0.589910 & 21.828s\\ 
+AUC & 0.589910 & 0.626719\\ 
  \hline
-Time & 0.626719 & 7.759s\\ 
+Time & 21.828s & 7.759s\\ 
  \hline
 \end{tabular}
 \end{center}
 
 Linear Regression with quantile loss function:\\
 
+\begin{center}
  \begin{tabular}{|c | c | c||} 
  \hline
  & Training & Testing\\ [0.5ex] 
  \hline\hline
-AUC & 0.511265 & 20.827s\\ 
+AUC & 0.511265 & 0.511187\\ 
  \hline
-Time & 0.511187 & 7.257s\\ 
+Time & 20.827s & 7.257s\\ 
  \hline
 \end{tabular}
 \end{center}
@@ -139,60 +151,95 @@ Time & 0.511187 & 7.257s\\
 
 \subsection{Logistic regression}
 \subsubsection{Python}
+
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training AUC & Testing AUC & Total time\\ [0.5ex]
+ \hline\hline
+Before join & 0.507160 & 0.474355 & 34.114s\\
+ \hline
+After join & 0.507160 & 0.474355 & 34.114s\\ 
+ \hline
+\end{tabular}
+\end{center}
+
 \subsubsection{R}
 
 \subsection{Neural networks}
 \subsubsection{Vowpal Wabbit}
 Before joining the main data set with the additional files, Neural Network gave best results with 8 nodes in the hidden layer:\\
 
-Training:\\
-AUC  : 0.514684\\
-Time : 0m29.861s\\
-
-Validation:\\
-AUC  : 0.632026\\
-Time : 0m8.509s\\\\
-
-Testing:\\
-AUC  : 0.647415\\
-Time : 0m17.910s\\\\
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training & Validation & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.514684 & 0.632026 & 0.647415\\
+ \hline
+Time & 29.861s & 8.509s & 17.910s\\ 
+ \hline
+\end{tabular}
+\end{center}
 
 After joining the main data set with the additional files, Neural Network gave best results with 5 nodes in the hidden layer:\\
 
-Training:\\
-AUC  : 0.637832\\
-Time : 0m11.455s\\\\
-
-Validation:\\
-AUC  : 0.604052\\
-Time : 0m9.341s\\\\
-
-Testing:\\
-AUC  : 0.602947\\
-Time : 0m8.078s\\\\
-R\\
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training & Validation & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.637832 & 0.604052 & 0.602947\\
+ \hline
+Time & 11.455s & 9.341s & 8.078s\\ 
+ \hline
+\end{tabular}
+\end{center}
+\subsubsection{R}
 
 \subsection{Random forests}
-\subsubsection{Python}
+
+\begin{center}
+ \begin{tabular}{|c | c | c | c||} 
+ \hline
+ & Training AUC & Testing AUC & Time\\ [0.5ex] 
+ \hline\hline
+Before join & 0.981369 & 0.620459 & 2m20.759s\\
+ \hline
+After join & 0.979796 & 0.608228 & 2m20.759s\\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Ensemble}
+We have tried ensembling the individual results using neural nets. Ensemble of Linear Regression and Neural Network with 8 nodes in hidden layer(Using Linear Regression) gives the following result:\\
+
+\begin{center}
+ \begin{tabular}{|c | c | c||} 
+ \hline
+ & Training & Testing\\ [0.5ex] 
+ \hline\hline
+AUC & 0.556894 & 0.533243\\ 
+ \hline
+Time & 28.621s & 10.838s\\ 
+ \hline
+\end{tabular}
+\end{center}
 
 \section{Proposed Method}
-We are proposing to improve the newly found AUC by different means by varying the parameter values, deriving new features by combining existing features and trying out alternate combinations of basic algorithms for blending.
+We propose to improve the newly found AUC by different means by varying the parameter values, deriving new features by combining existing features and trying out alternate combinations of basic algorithms for blending.
 \section{Future Work}
-	Some more complex algorithms namely SVM and Collaborative Filtering will be next tried on this data subset. Then efficient methods for ensembling using Neural Networks and random forest will be done. 
-	After that the complete dataset will be used with Vowpal Wabbit as the tool. If Vowpal Wabbit can't run such large data, then a cluster will be set up and the machine learning algorithms already used and others on the paper will be implemented on it. With this, hopefully we would be able to improve the AUC obtained in the paper or otherwise get an approximately same AUC.  
-
+Some more complex algorithms namely SVM and Collaborative Filtering will be next tried on this data subset. Efficient methods for ensembling using Neural Networks and random forest will be done. The complete dataset will be used with Vowpal Wabbit as the tool. If Vowpal Wabbit isn't efficient enough, then a cluster will be set up and the machine learning algorithms already used and others on the paper will be implemented on it. With this, hopefully we would be able to improve the AUC obtained in the paper or otherwise get an approximately same AUC.
 \section{Conclusion}
-We have implemented the basic algorithms like Linear Regression, Polynomial Regression, Logistic Regression and Artificial Neural Network on a practice data set. And ANN seems to the best on this practice data set (test set). Presently, we are working on getting the subset of the original data set of our problem that represents the original data set so that first we can work on that subset in our local machine. In the next semester, we are planning to work on the complete data set using some parallel processing techniques.
+We managed to get a good grip over the data and obtained a sufficiently small subset of it for local implementation. Some machine learning techniques including linear regression, logistic regression, neural nets and random forests were implemented in the smaller data set using different machine learning tools such as Python, Vowpal Wabbit and R, we are working on getting the subset of the original data set of our problem that represents the original data set so that first we can work on that subset in our local machine.
 \section{Bibliography}
 \begin{enumerate}
+	\item KDD Cup 2012, https://www.kddcup2012.org/c/kddcup2012-track2
 	\item Machine Learning by Andrew Ng, https://class.coursera.org/ml-006
 	\item An Introduction to Statistical Learning with Applications in R : By Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
 	\item An Introduction to R : By W. N. Venables, D. M. Smith and the R Core Team
-	\item NEURAL NETWORKS by Christos Stergiou and Dimitrios Siganos, \\http://www.doc.ic.ac.uk/~nd/surprise\_96/journal/vol4/cs11/report.html
-	\item Types of artificial neural networks, http://en.wikipedia.org/wiki/Types\_of\_artificial\_neural\_networks
-	\item Neural Networks, \\http://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/Architecture/feedforward.html
-	\item KDD Cup 2012, https://www.kddcup2012.org/c/kddcup2012-track2
-	\item YearPredictionMSD Data Set, https://archive.ics.uci.edu/ml/datasets/YearPredictionMSD
+	\item http://scikit-learn.org/stable/
+	
 \end{enumerate}
 \bibliographystyle{unsrt}	
 
