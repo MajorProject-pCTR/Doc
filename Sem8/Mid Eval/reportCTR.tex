@@ -16,11 +16,11 @@
 	
 
 \abstract{} 
-The online advertising industry is thriving on the learning problem of predicting click through rates for ads. We attempt to propose efficient machine learning techniques that could be used for predicting click through rates with a high degree of accuracy. So far, we have implemented basic machine learning algorithms in a practice data set to which such techniques had been applied and the results were known to us beforehand. This was required as we were relatively new to the topic. 
+The online advertising industry is thriving on the learning problem of predicting click through rates for ads. We attempt to propose efficient machine learning techniques that could be used for predicting click through rates with a high degree of accuracy.
 \section{Problem Definition}
 As part of an online machine learning competition held by KDD Cup, Tencent Corporation released a large data set obtained from the user logs of the search engine soso. The task is to predict the CTR (pCTR) of ads as accurately as possible.
 \section{Introduction}
-Click-through rate is a very useful metric for rankinf and pricing ads in the internet marketing world. It is one of the greatest applications of machine learning. Sponsored search advertising, contextual advertising, display advertising, and real-time bidding auctions have all relied heavily on the ability of learned models to predict ad click–through rates accurately, quickly, and reliably.  A typical industrial model may provide predictions on billions of events per day, using a correspondingly large feature space, and then learn from the resulting mass of data. When a user does a search q, an initial set of candidate ads is matched to the query q based on advertiser-chosen keywords. An auction mechanism then determines whether these ads are shown to the user, what order they are shown in, and what prices the advertisers pay if their ad is clicked. In addition to the advertiser bids, an important input to the auction is, for each ad a, an estimate of P(click | q, a), the probability that the ad will be clicked if it is shown.
+Click-through rate is a very useful metric for ranking and pricing ads in the internet marketing world. It is one of the greatest applications of machine learning. Sponsored search advertising, contextual advertising, display advertising, and real-time bidding auctions have all relied heavily on the ability of learned models to predict ad click–through rates accurately, quickly, and reliably.  A typical industrial model may provide predictions on billions of events per day, using a correspondingly large feature space, and then learn from the resulting mass of data. When a user does a search q, an initial set of candidate ads is matched to the query q based on advertiser-chosen keywords. An auction mechanism then determines whether these ads are shown to the user, what order they are shown in, and what prices the advertisers pay if their ad is clicked. In addition to the advertiser bids, an important input to the auction is, for each ad a, an estimate of P(click | q, a), the probability that the ad will be clicked if it is shown.
 \subsection{Literature Survey}
 The evaluation metric used in this contest was AUC(Area Under the ROC Curve). AUC gives the probability that a classifier will rank a randomly chosen positive instance higher than a randomly chosen negative one. We will be using the same metric in our project.\\
 The Area Under the ROC Curve is found to obtain a single scalar value from the ROC. The value ranges from 0 to 1 with AUC equal to 1 being a perfect classifier. A value of 0.5 indicates a random classifier.\\
@@ -90,7 +90,7 @@ All our code have been hosted in github : https://github.com/MajorProject-pCTR/B
 R \\
 R is the most widely used statistical language in data-science competetions. There are efficient inbuilt functions for machine learning algorithms in R. Its disadvantage is that objects must generally be stored in physical memory. \\\\
 Octave \\
-Octave is the open-source variant of Matlab. Its efficient vectorized computations have been used in our implementations. The performance of this language is also limited by primary memory.
+Octave is the open-source variant of Matlab. Its efficient vectorized computations have been used in our implementations. The performance of this language is also limited by primary memory.\\\\
 
 Python\\
 The tasks were implemented using scikit-learn and numpy. Scikit-learn is used for classification, feature selection, feature extraction and clustering.\\\\
@@ -103,8 +103,6 @@ Here are the results that we obtained.
 \section{Results}
 \subsection{Linear regression}
 \subsubsection{Python}
-Before join\\
-
 \begin{center}
  \begin{tabular}{|c | c | c | c||} 
  \hline
@@ -238,8 +236,13 @@ We managed to get a good grip over the data and obtained a sufficiently small su
 	\item Machine Learning by Andrew Ng, https://class.coursera.org/ml-006
 	\item An Introduction to Statistical Learning with Applications in R : By Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
 	\item An Introduction to R : By W. N. Venables, D. M. Smith and the R Core Team
-	\item http://scikit-learn.org/stable/
-	
+	\item scikit-learn Machine Learning in Pythonhttp://scikit-learn.org/stable/
+	\item Convex Optimized - Vowpal Wabbit tutorial for the Uninitiated http://zinkov.com/posts/2013-08-13-vowpal-tutorial/
+	\item JohnLangford/vowpal\_wabbit https://github.com/JohnLangford/vowpal\_wabbit/wiki
+	\item Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf
+	\item A Two-Stage Ensemble of Diverse Models for Advertisement Ranking in KDD Cup 2012 https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/NTU.pdf
+	\item Click-Through Prediction for Sponsored Search Advertising with Hybrid Models https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/CAS.pdf
+	\item A Feature Engineering Approach for Click-Through Rate Prediction https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/BirutasTeam.pdf
 \end{enumerate}
 \bibliographystyle{unsrt}	
 
