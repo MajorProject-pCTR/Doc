@@ -62,7 +62,7 @@ In the previous semester, we had implemented some basic algorithms on a practice
 
 One of the major difficulties that we had to encounter while proceeding was to understand the dataset thoroughly and how it could be used. We were expected to predict the CTR value i.e. clicks/impressions. This could be easily modeled as a regression problem by training the model to use the continuous valued CTR as target. To model this as a classification problem, we had to unroll and expand the data. Each tuple is expanded as the number of impressions in the original file. The number of clicks in the original file determine the number of tuples which will carry a 1 in the clicks field. The others will be 0. Thus the impression field is not present in the resulting data set. As we have converted it to a classification problem, the model will now predict the probability with which the ad will be clicked by a particular user which is effectively the CTR. \\\\
 
-We planned to work on a smaller subset of the data for the time being as the original data set is too huge to handle at this point. Randomly, 1000000 tuples were chosen to work with. From that, 60\% was used for training, 20\% for validation and the remaining for testing.\\\\
+\textbf{Data Used} We planned to work on a smaller subset of the data for the time being as the original data set is too huge to handle at this point. Randomly, 1000000 tuples were chosen to work with. From that, 60\% was used for training, 20\% for validation and the remaining for testing.\\\\
 
 As per the competition, AUC is used to evaluate the results rather than accuracy. We encountered a problem with the code that was provided as the columns were being wrongly read and hence gave incorrect results. On correcting the code for computing the AUC we were able to make some progress. \\\\
 
@@ -98,7 +98,11 @@ The tasks were implemented using scikit-learn and numpy. Scikit-learn is used fo
 Vowpal Wabbit\\
 Vowpal Wabbit is an open source machine learning library developed by Yahoo. It is implemented using Online Machine Learning techniques. Vowpal Wabbit is out-of-core i.e., designed to even handle the data that cannot be fit in the primary memory by accessing data from hard drives.\\\\
 
-Here are the results that we obtained.
+\section{Design}
+Ensembled model with input as predictions of individual best algorithms combined together will be used. 
+\begin{center}
+\includegraphics[scale=0.5]{flowchart}
+\end{center}
 
 \section{Results}
 \subsection{Linear regression}
@@ -107,12 +111,12 @@ Here are the results that we obtained.
 Parameters - alpha chosen by minimizing the cost of validation set. Number of iterations was chosen to be 1000.
 \\
 
-Before join
+\textbf{Before join}
 
 	Best alpha = 0.5 
 \\
 
-	Time taken for training = 56.048276
+	Time taken for training = 56.048276 s
 
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -124,12 +128,12 @@ AUC & 0.624998 & 0.641728\\
 \end{tabular}
 \end{center}
 
-After join
+\textbf{After join}
 
 	Best alpha = 0.01 
 \\
 
-	Time taken for training = 49.639566
+	Time taken for training = 49.639566 s
 
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -230,12 +234,12 @@ After join & 0.638545 & 0.650791 & 13.78439 s\\
 Parameters - lambda was chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
 \\
 
-Before join
+\textbf{Before join}
 
 	Best lambda = 0 
 \\
 
-	Time taken for training = 16.486638
+	Time taken for training = 16.486638 s
 
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -247,11 +251,11 @@ AUC & 0.628339 & 0.640716\\
 \end{tabular}
 \end{center}
 
-After join
+\textbf{After join}
 
 	Best lambda = 0
 \\
-	Time taken for training = 0.723193
+	Time taken for training = 20.723193 s
 \\
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -298,12 +302,12 @@ Time & 11.455s & 9.341s & 8.078s\\
 Parameters - hidden layer nodes and lambda were chosen by minimizing the difference between cost of validation and training set. Number of iterations was chosen to be 100.
 \\
 
-Before join
+\textbf{Before join}
 
 	Best lambda = 0.5 Opt hidden layer size = 5 
 \\
 
-	Time taken for training = 368.599383
+	Time taken for training = 368.599383 s
 
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -315,11 +319,11 @@ AUC & 0.649975 & 0.658944\\
 \end{tabular}
 \end{center}
 
-After join
+\textbf{After join}
 
 	Best lambda = 0 Opt hidden layer size = 6 
 \\
-	Time taken for training = 330.882975
+	Time taken for training = 330.882975 s
 \\
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -347,7 +351,7 @@ After join & 0.979796 & 0.608228 & 2m20.759s\\
 \end{center}
 
 \subsection{Ensemble}
-We have tried ensembling the individual results using neural nets. Ensemble of Linear Regression and Neural Network with 8 nodes in hidden layer(Using Linear Regression) gives the following result:\\
+\textbf{Ensemble of Linear Regression and Neural Network with 8 nodes in hidden layer(Using Linear Regression)}\\
 
 \begin{center}
  \begin{tabular}{|c | c | c||} 
@@ -361,12 +365,12 @@ Time & 28.621s & 10.838s\\
 \end{tabular}
 \end{center}
 
-Using neural network with 100 iteration in Octave
+\textbf{Using neural network with 100 iteration in Octave}\\
 input features are outputs of linear regression in R, logistic regression in R and neural network in Octave all on joined datasets
 
 	Best lambda = 0 Opt hidden layer size = 1 
 \\
-	Time taken for training = 190.248439
+	Time taken for training = 190.248439 s
 \\
 \begin{center}
  \begin{tabular}{|c | c | c ||} 
@@ -378,11 +382,6 @@ AUC & 0.666976 & 0.664057\\
 \end{tabular}
 \end{center}
 
-\section{Proposed Method}
-Ensembled model with input as predictions of individual algorithms combined together will be used. 
-\begin{center}
-\includegraphics[scale=0.5]{flowchart}
-\end{center}
 \section{Future Work}
 Some more complex algorithms namely SVM and Collaborative Filtering will be next tried on this data subset. Efficient methods for ensembling using Neural Networks and random forest will be done. The complete dataset will be used with Vowpal Wabbit as the tool. If Vowpal Wabbit isn't efficient enough, then a cluster will be set up and the machine learning algorithms already used and others on the paper will be implemented on it. With this, hopefully we would be able to improve the AUC obtained in the paper or otherwise get an approximately same AUC.
 
